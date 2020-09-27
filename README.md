@@ -31,21 +31,28 @@ Power9
 GCC 8.4.0
 
 ```
+$ salloc -N 1 --gres=gpu:4 -t 10
+$ ssh <computeNode>
+$ module load gcc
 $ g++ -O3 dotprod.cpp -o dotprod
 $ for i in {0..10}; do ./dotprod ; done &> p9.log
 $ cat p9.log
-alloc(s) compute(s) total(s) 0.18676 0.36163 0.54839
-alloc(s) compute(s) total(s) 0.18408 0.35599 0.54008
-alloc(s) compute(s) total(s) 0.18607 0.35712 0.54319
-alloc(s) compute(s) total(s) 0.18309 0.35546 0.53855
-alloc(s) compute(s) total(s) 0.18058 0.35723 0.53781
-alloc(s) compute(s) total(s) 0.18930 0.35939 0.54869
-alloc(s) compute(s) total(s) 0.18581 0.35596 0.54177
-alloc(s) compute(s) total(s) 0.18070 0.35554 0.53624
-alloc(s) compute(s) total(s) 0.18052 0.35398 0.53449
-alloc(s) compute(s) total(s) 0.18060 0.35822 0.53882
-alloc(s) compute(s) total(s) 0.18157 0.36013 0.54170
-$ awk 'BEGIN {a=0;c=0}{a=($4>a ? $4 : a); c=($5>c ? $5 : c)} END{print "max alloc (sec): " a "  max compute (sec): " c}' p9.log
-max alloc (sec): 0.18930  max compute (sec): 0.36163
+alloc(s) compute(s) dealloc(s) total(s) 0.00499 0.35648 0.00004 0.36151
+alloc(s) compute(s) dealloc(s) total(s) 0.00496 0.35351 0.00004 0.35851
+alloc(s) compute(s) dealloc(s) total(s) 0.00497 0.35365 0.00003 0.35865
+alloc(s) compute(s) dealloc(s) total(s) 0.00492 0.35645 0.00004 0.36140
+alloc(s) compute(s) dealloc(s) total(s) 0.00503 0.35458 0.00003 0.35964
+alloc(s) compute(s) dealloc(s) total(s) 0.00503 0.35329 0.00003 0.35836
+alloc(s) compute(s) dealloc(s) total(s) 0.00501 0.35579 0.00004 0.36084
+alloc(s) compute(s) dealloc(s) total(s) 0.00504 0.35629 0.00004 0.36137
+alloc(s) compute(s) dealloc(s) total(s) 0.00501 0.35596 0.00004 0.36101
+alloc(s) compute(s) dealloc(s) total(s) 0.00500 0.35655 0.00004 0.36159
+alloc(s) compute(s) dealloc(s) total(s) 0.00497 0.35315 0.00003 0.35815
+$ awk 'BEGIN {a=0;c=0;d=0;t=0}{\
+a=($5>a ? $5 : a); \
+c=($6>c ? $6 : c); \
+d=($7>d ? $7 : d); \
+t=($8>t ? $8 : t)} \
+END{print "max (sec) alloc compute dealloc total " a " " c " " d " " t}' p9.log
+max (sec) alloc compute dealloc total 0.00504 0.35655 0.00004 0.36159
 ```
-
