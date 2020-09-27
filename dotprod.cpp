@@ -94,10 +94,10 @@ int main(int argc, char** argv) {
   }
 
   for(LO i=0;i<p1li0;i++){
-    for(LO j=0;j<p3lj0;j++) free(loc_data[i][j]);
-    free(loc_data[i]);
+    for(LO j=0;j<p3lj0;j++) delete[] loc_data[i][j];
+    delete[] loc_data[i];
   }
-  free(loc_data);
+  delete[] loc_data;
 
   const auto doneCompute = std::chrono::steady_clock::now();
 
