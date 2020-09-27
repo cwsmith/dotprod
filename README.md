@@ -29,6 +29,7 @@ Power9
 GCC 8.4.0
 
 ```
+max (sec) alloc compute dealloc total 0.00508 0.35628 0.00004 0.36136
 ```
 
 allocate and build

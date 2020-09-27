@@ -1,0 +1,11 @@
+alloc(s) compute(s) dealloc(s) total(s) 0.00548 0.35358 0.00004 0.35909
+alloc(s) compute(s) dealloc(s) total(s) 0.00558 0.35541 0.00004 0.36103
+alloc(s) compute(s) dealloc(s) total(s) 0.00557 0.35378 0.00004 0.35938
+alloc(s) compute(s) dealloc(s) total(s) 0.00554 0.35507 0.00004 0.36065
+alloc(s) compute(s) dealloc(s) total(s) 0.00553 0.36670 0.00005 0.37229
+alloc(s) compute(s) dealloc(s) total(s) 0.00585 0.43842 0.00006 0.44433
+alloc(s) compute(s) dealloc(s) total(s) 0.00582 0.41257 0.00004 0.41843
+alloc(s) compute(s) dealloc(s) total(s) 0.00560 0.35556 0.00004 0.36120
+alloc(s) compute(s) dealloc(s) total(s) 0.00556 0.35361 0.00004 0.35920
+alloc(s) compute(s) dealloc(s) total(s) 0.00567 0.35332 0.00004 0.35903
+alloc(s) compute(s) dealloc(s) total(s) 0.00560 0.35482 0.00004 0.36046
