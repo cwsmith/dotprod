@@ -10,19 +10,24 @@ GCC 10.1.0
 $ g++ -O3 dotprod.cpp -o dotprod
 $ for i in {0..10}; do ./dotprod ; done &> turtle.log
 $ cat turtle.log;
-alloc(s) compute(s) total(s) 0.29898 0.20001 0.49900
-alloc(s) compute(s) total(s) 0.29479 0.19874 0.49353
-alloc(s) compute(s) total(s) 0.29954 0.20218 0.50172
-alloc(s) compute(s) total(s) 0.29265 0.20039 0.49305
-alloc(s) compute(s) total(s) 0.29418 0.20131 0.49549
-alloc(s) compute(s) total(s) 0.29465 0.20190 0.49654
-alloc(s) compute(s) total(s) 0.29392 0.20023 0.49414
-alloc(s) compute(s) total(s) 0.29535 0.20173 0.49708
-alloc(s) compute(s) total(s) 0.29939 0.20132 0.50071
-alloc(s) compute(s) total(s) 0.28834 0.19980 0.48814
-alloc(s) compute(s) total(s) 0.28349 0.19988 0.48336
-$ awk 'BEGIN {a=0;c=0}{a=($4>a ? $4 : a); c=($5>c ? $5 : c)} END{print "max alloc (sec): " a "  max compute (sec): " c}' turtle.log
-max alloc (sec): 0.29954  max compute (sec): 0.20218
+alloc(s) compute(s) dealloc(s) total(s) 0.00840 0.20469 0.00000 0.21309
+alloc(s) compute(s) dealloc(s) total(s) 0.00817 0.20175 0.00001 0.20992
+alloc(s) compute(s) dealloc(s) total(s) 0.00812 0.20318 0.00000 0.21130
+alloc(s) compute(s) dealloc(s) total(s) 0.00811 0.20462 0.00000 0.21273
+alloc(s) compute(s) dealloc(s) total(s) 0.00814 0.20240 0.00000 0.21055
+alloc(s) compute(s) dealloc(s) total(s) 0.00813 0.20258 0.00000 0.21072
+alloc(s) compute(s) dealloc(s) total(s) 0.00815 0.20441 0.00000 0.21256
+alloc(s) compute(s) dealloc(s) total(s) 0.00815 0.20138 0.00000 0.20953
+alloc(s) compute(s) dealloc(s) total(s) 0.00812 0.20198 0.00000 0.21010
+alloc(s) compute(s) dealloc(s) total(s) 0.00811 0.20264 0.00000 0.21076
+alloc(s) compute(s) dealloc(s) total(s) 0.00817 0.20388 0.00001 0.21206
+$ awk 'BEGIN {a=0;c=0;d=0;t=0}{\
+a=($5>a ? $5 : a); \
+c=($6>c ? $6 : c); \
+d=($7>d ? $7 : d); \
+t=($8>t ? $8 : t)} \
+END{print "max (sec) alloc compute dealloc total " a " " c " " d " " t}' turtle.log
+max (sec) alloc compute dealloc total 0.00840 0.20469 0.00001 0.21309
 ```
 
 ## aimos
